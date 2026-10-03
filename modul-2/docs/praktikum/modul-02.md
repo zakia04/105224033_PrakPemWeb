@@ -89,8 +89,6 @@ Pada layar kecil, menu menggunakan `flex-col`, sedangkan mulai breakpoint `sm`, 
 
 Penggunaan Flexbox sesuai untuk bagian navigasi karena elemen-elemen di dalamnya perlu disusun dalam satu arah dan diberi jarak yang konsisten.
 
-### Dokumentasi Flexbox
-
 **Gambar 2. Implementasi Flexbox pada navigasi halaman utama**
 
 ![Implementasi Flexbox](./images/flexbox.png)
@@ -117,7 +115,6 @@ Dengan konfigurasi tersebut, pada layar mobile tiga fitur ditampilkan secara ver
 
 Pada layar yang lebih lebar, fitur berubah menjadi dua kolom, kemudian menjadi tiga kolom pada ukuran desktop.
 
-### Dokumentasi Grid
 
 **Gambar 3. Implementasi Grid pada bagian Fitur Utama**
 
@@ -176,23 +173,17 @@ Ringkasan responsivitas halaman dapat dilihat pada tabel berikut:
 
 ## 2.5 Dokumentasi Tampilan Responsif
 
-### Tampilan 360 px
-
 **Gambar 4. Tampilan halaman pada lebar 360 px**
 
 ![Tampilan 360 px](./images/responsive-360.png)
 
 Pada lebar 360 px, navigasi masih tersusun secara vertikal. Bagian Fitur Utama juga ditampilkan dalam satu kolom sehingga setiap fitur tersusun dari atas ke bawah.
 
-### Tampilan 768 px
-
 **Gambar 5. Tampilan halaman pada lebar 768 px**
 
 ![Tampilan 768 px](./images/responsive-768.png)
 
 Pada lebar 768 px, navigasi berubah menjadi horizontal. Bagian Fitur Utama menggunakan dua kolom karena sudah melewati breakpoint `sm`, sedangkan bagian Cara Kerja dan Informasi Tambahan masih tersusun dalam satu kolom karena belum mencapai breakpoint `lg`.
-
-### Tampilan 1280 px
 
 **Gambar 6. Tampilan halaman pada lebar 1280 px**
 
@@ -220,8 +211,6 @@ Hasil tersebut menunjukkan bahwa pada pemeriksaan Lighthouse yang dilakukan, tid
 | Halaman Utama | Belum tersedia | 100 |
 
 Data skor sebelum perbaikan dan skor halaman latihan belum tersedia dalam dokumentasi pengujian. Oleh karena itu, angka yang belum terverifikasi tidak dicantumkan.
-
-### Dokumentasi Lighthouse
 
 **Gambar 7. Skor Lighthouse**
 
