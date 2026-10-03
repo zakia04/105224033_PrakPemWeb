@@ -50,8 +50,6 @@ Pemeriksaan struktur halaman dilakukan menggunakan **Accessibility Tree** pada D
 
 ![Pohon Aksesibilitas](./images/accessibility-tree.png)
 
-> **Catatan:** Sesuaikan nama file gambar dan lokasi folder dengan file screenshot yang ada di repository.
-
 ---
 
 # 2. Tata Letak Responsif
