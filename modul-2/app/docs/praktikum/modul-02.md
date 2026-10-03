@@ -1,34 +1,32 @@
-Implementasi Struktur Semantik, Tata Letak Responsif, dan Audit Aksesibilitas
+# Implementasi Struktur Semantik, Tata Letak Responsif, dan Audit Aksesibilitas
 
-Nama/NIM  : Zakiati Latifa/105224033
-Repository: https://github.com/zakia04/105224033_PrakPemWeb/tree/main/modul-2
+**Nama/NIM:** Zakiati Latifa / 105224033  
+**Repository:** https://github.com/zakia04/105224033_PrakPemWeb/tree/main/modul-2
 
-1. Struktur Semantik
+---
+
+# 1. Struktur Semantik
 
 Halaman utama dibuat menggunakan elemen HTML semantik agar struktur halaman dapat dipahami dengan lebih jelas oleh pengguna maupun teknologi bantu.
 
 Struktur utama halaman terdiri dari beberapa elemen semantik, yaitu:
 
-<header> untuk bagian kepala halaman dan navigasi utama.
+- `<header>` untuk bagian kepala halaman dan navigasi utama.
+- `<nav>` untuk menu navigasi.
+- `<main>` untuk konten utama halaman.
+- `<section>` untuk mengelompokkan bagian-bagian konten berdasarkan topik.
+- `<article>` untuk setiap kartu fitur.
+- `<aside>` untuk informasi tambahan.
+- `<form>` untuk formulir kontak.
+- `<footer>` untuk bagian akhir halaman.
 
-<nav> untuk menu navigasi.
+Pada halaman utama juga digunakan hierarki heading yang berurutan. Judul utama halaman menggunakan `<h1>`, sedangkan judul bagian menggunakan `<h2>`, dan judul masing-masing fitur menggunakan `<h3>`. Struktur tersebut membantu menunjukkan hubungan antara judul utama, bagian halaman, dan isi di dalamnya.
 
-<main> untuk konten utama halaman.
-
-<section> untuk mengelompokkan bagian-bagian konten berdasarkan topik.
-
-<article> untuk setiap kartu fitur.
-
-<aside> untuk informasi tambahan.
-
-<form> untuk formulir kontak.
-
-<footer> untuk bagian akhir halaman.
-
-Pada halaman utama juga digunakan hierarki heading yang berurutan. Judul utama halaman menggunakan <h1>, sedangkan judul bagian menggunakan <h2>, dan judul masing-masing fitur menggunakan <h3>. Struktur tersebut membantu menunjukkan hubungan antara judul utama, bagian halaman, dan isi di dalamnya.
+## 1.1 Struktur Heading
 
 Struktur heading pada halaman utama adalah:
 
+```text
 H1
 └── Kalimat nilai utama produk
     ├── H2 Fitur Utama
@@ -38,250 +36,360 @@ H1
     ├── H2 Cara Kerja
     ├── H2 Informasi Tambahan
     └── H2 Hubungi Kami
+```
 
-Selain struktur semantik, halaman juga memiliki tautan "Lewati ke konten utama" yang mengarah ke elemen <main id="konten">. Tautan ini membantu pengguna keyboard melewati navigasi dan langsung menuju konten utama.
+Selain struktur semantik, halaman juga memiliki tautan **"Lewati ke konten utama"** yang mengarah ke elemen `<main id="konten">`.
 
-Pohon Aksesibilitas
+Tautan tersebut membantu pengguna yang menggunakan keyboard untuk melewati bagian navigasi dan langsung menuju konten utama halaman.
 
-Pemeriksaan struktur halaman dilakukan menggunakan Accessibility Tree pada DevTools. Pemeriksaan ini digunakan untuk melihat bagaimana elemen-elemen halaman dikenali oleh browser dan teknologi bantu.
+## 1.2 Pohon Aksesibilitas
 
-Gambar 1. Pohon aksesibilitas halaman utama pada DevTools
+Pemeriksaan struktur halaman dilakukan menggunakan **Accessibility Tree** pada DevTools. Pemeriksaan ini digunakan untuk melihat bagaimana elemen-elemen halaman dikenali oleh browser dan teknologi bantu.
 
-2. Tata Letak Responsif
+**Gambar 1. Pohon aksesibilitas halaman utama pada DevTools**
 
-Halaman utama menggunakan Flexbox dan CSS Grid untuk mengatur tata letak agar dapat menyesuaikan ukuran layar.
+![Pohon Aksesibilitas](./images/accessibility-tree.png)
 
-Pengujian tampilan dilakukan pada beberapa ukuran layar, yaitu 360 px, 768 px, dan 1280 px. Dokumentasi awal juga memuat tangkapan layar pada lebar 360 px, 798 px, dan 1280 px.
+> **Catatan:** Sesuaikan nama file gambar dan lokasi folder dengan file screenshot yang ada di repository.
 
-2.1 Flexbox
+---
 
-Flexbox digunakan pada bagian navigasi. Kode yang digunakan adalah:
+# 2. Tata Letak Responsif
 
+Halaman utama menggunakan **Flexbox** dan **CSS Grid** untuk mengatur tata letak agar dapat menyesuaikan ukuran layar.
+
+Pengujian tampilan dilakukan pada tiga ukuran layar, yaitu:
+
+- 360 px
+- 768 px
+- 1280 px
+
+Penggunaan Flexbox dan Grid membuat tampilan halaman dapat menyesuaikan susunan elemen berdasarkan ukuran layar.
+
+## 2.1 Flexbox
+
+Flexbox digunakan pada bagian navigasi halaman. Kode yang digunakan adalah:
+
+```tsx
 <nav
   aria-label="Navigasi utama"
   className="mx-auto flex max-w-6xl flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between"
 >
+```
 
-Pada layar kecil, flex-col membuat nama produk dan menu navigasi tersusun secara vertikal. Mulai breakpoint sm, digunakan sm:flex-row sehingga elemen navigasi tersusun secara horizontal.
+Pada layar kecil, kelas `flex-col` membuat nama produk dan menu navigasi tersusun secara vertikal.
+
+Mulai breakpoint `sm`, digunakan kelas `sm:flex-row` sehingga elemen navigasi berubah menjadi susunan horizontal.
 
 Menu navigasi juga menggunakan Flexbox:
 
+```tsx
 <ul className="flex flex-col gap-2 sm:flex-row sm:gap-6">
+```
 
-Penggunaan Flexbox sesuai untuk navigasi karena elemen-elemen di dalamnya perlu disusun dalam satu arah dan diberi jarak yang konsisten.
+Pada layar kecil, menu menggunakan `flex-col`, sedangkan mulai breakpoint `sm`, menu berubah menjadi horizontal menggunakan `sm:flex-row`.
 
-Gambar 2. Implementasi Flexbox pada navigasi halaman utama
+Penggunaan Flexbox sesuai untuk bagian navigasi karena elemen-elemen di dalamnya perlu disusun dalam satu arah dan diberi jarak yang konsisten.
 
-2.2 Grid pada Fitur Utama
+### Dokumentasi Flexbox
 
-Bagian Fitur Utama menggunakan CSS Grid dengan kode:
+**Gambar 2. Implementasi Flexbox pada navigasi halaman utama**
 
+![Implementasi Flexbox](./images/flexbox.png)
+
+---
+
+## 2.2 Grid pada Fitur Utama
+
+Bagian **Fitur Utama** menggunakan CSS Grid dengan kode:
+
+```tsx
 <ul className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+```
 
-Kelas tersebut membuat jumlah kolom berubah sesuai ukuran layar:
+Kelas tersebut membuat jumlah kolom berubah sesuai dengan ukuran layar.
 
-Ukuran layar
+| Ukuran Layar | Kelas Tailwind | Jumlah Kolom |
+|---|---|---:|
+| < 640 px | `grid-cols-1` | 1 |
+| ≥ 640 px | `sm:grid-cols-2` | 2 |
+| ≥ 1024 px | `lg:grid-cols-3` | 3 |
 
-Kelas
+Dengan konfigurasi tersebut, pada layar mobile tiga fitur ditampilkan secara vertikal dalam satu kolom.
 
-Jumlah kolom
+Pada layar yang lebih lebar, fitur berubah menjadi dua kolom, kemudian menjadi tiga kolom pada ukuran desktop.
 
-< 640 px
+### Dokumentasi Grid
 
-grid-cols-1
+**Gambar 3. Implementasi Grid pada bagian Fitur Utama**
 
-1
+![Implementasi Grid](./images/grid.png)
 
-≥ 640 px
+---
 
-sm:grid-cols-2
+## 2.3 Grid pada Cara Kerja dan Informasi Tambahan
 
-2
+Bagian **Cara Kerja** dan **Informasi Tambahan** menggunakan CSS Grid dengan kode:
 
-≥ 1024 px
-
-lg:grid-cols-3
-
-3
-
-Dengan demikian, pada layar mobile tiga fitur ditampilkan secara vertikal. Pada layar yang lebih lebar, fitur berubah menjadi dua kolom dan kemudian tiga kolom pada ukuran desktop.
-
-Gambar 3. Implementasi Grid pada bagian Fitur Utama
-
-2.3 Grid pada Cara Kerja dan Informasi Tambahan
-
-Bagian Cara Kerja dan Informasi Tambahan menggunakan:
-
+```tsx
 <div className="grid gap-8 lg:grid-cols-[2fr_1fr]">
+```
 
-Sebelum breakpoint lg, kedua bagian tersusun dalam satu kolom. Mulai ukuran 1024 px, layout berubah menjadi dua kolom dengan perbandingan:
+Sebelum breakpoint `lg`, kedua bagian tersusun dalam satu kolom.
 
+Mulai ukuran 1024 px, layout berubah menjadi dua kolom dengan perbandingan:
+
+```text
 Cara Kerja              Informasi Tambahan
     2fr                         1fr
+```
 
-Artinya, bagian Cara Kerja memperoleh ruang lebih besar dibandingkan bagian Informasi Tambahan.
+Artinya, bagian **Cara Kerja** memperoleh ruang yang lebih besar dibandingkan bagian **Informasi Tambahan**.
 
-2.4 Breakpoint yang Digunakan
+---
+
+## 2.4 Breakpoint yang Digunakan
 
 Breakpoint yang digunakan pada halaman adalah:
 
-sm = 640 px, digunakan untuk mengubah navigasi menjadi horizontal dan mengubah fitur menjadi dua kolom.
+### `sm = 640 px`
 
-lg = 1024 px, digunakan untuk mengubah fitur menjadi tiga kolom dan mengubah bagian Cara Kerja serta Informasi Tambahan menjadi dua kolom.
+Breakpoint `sm` digunakan untuk:
 
-Ringkasannya:
+- Mengubah navigasi dari vertikal menjadi horizontal.
+- Mengubah Fitur Utama dari satu kolom menjadi dua kolom.
 
-Lebar layar
+### `lg = 1024 px`
 
-Navigasi
+Breakpoint `lg` digunakan untuk:
 
-Fitur Utama
+- Mengubah Fitur Utama menjadi tiga kolom.
+- Mengubah bagian Cara Kerja dan Informasi Tambahan menjadi dua kolom dengan perbandingan `2fr 1fr`.
 
-Cara Kerja + Informasi
+Ringkasan responsivitas halaman dapat dilihat pada tabel berikut:
 
-360 px
+| Lebar Layar | Navigasi | Fitur Utama | Cara Kerja + Informasi |
+|---|---|---|---|
+| 360 px | Vertikal | 1 kolom | 1 kolom |
+| 768 px | Horizontal | 2 kolom | 1 kolom |
+| 1280 px | Horizontal | 3 kolom | 2 kolom (2:1) |
 
-Vertikal
+---
 
-1 kolom
+## 2.5 Dokumentasi Tampilan Responsif
 
-1 kolom
+### Tampilan 360 px
 
-768 px
+**Gambar 4. Tampilan halaman pada lebar 360 px**
 
-Horizontal
+![Tampilan 360 px](./images/responsive-360.png)
 
-2 kolom
+Pada lebar 360 px, navigasi masih tersusun secara vertikal. Bagian Fitur Utama juga ditampilkan dalam satu kolom sehingga setiap fitur tersusun dari atas ke bawah.
 
-1 kolom
+### Tampilan 768 px
 
-1280 px
+**Gambar 5. Tampilan halaman pada lebar 768 px**
 
-Horizontal
+![Tampilan 768 px](./images/responsive-768.png)
 
-3 kolom
+Pada lebar 768 px, navigasi berubah menjadi horizontal. Bagian Fitur Utama menggunakan dua kolom karena sudah melewati breakpoint `sm`, sedangkan bagian Cara Kerja dan Informasi Tambahan masih tersusun dalam satu kolom karena belum mencapai breakpoint `lg`.
 
-2 kolom (2:1)
+### Tampilan 1280 px
 
-2.5 Dokumentasi Tampilan Responsif
+**Gambar 6. Tampilan halaman pada lebar 1280 px**
 
-Gambar 4. Tampilan halaman pada lebar 360 px
+![Tampilan 1280 px](./images/responsive-1280.png)
 
-Gambar 5. Tampilan halaman pada lebar 768 px
+Pada lebar 1280 px, navigasi tetap tersusun secara horizontal. Bagian Fitur Utama menggunakan tiga kolom, sedangkan bagian Cara Kerja dan Informasi Tambahan menggunakan dua kolom dengan perbandingan `2fr 1fr`.
 
-Gambar 6. Tampilan halaman pada lebar 1280 px
+---
 
-3. Audit Aksesibilitas
+# 3. Audit Aksesibilitas
 
-Audit aksesibilitas dilakukan menggunakan Lighthouse dan pemeriksaan manual dengan papan ketik.
+Audit aksesibilitas dilakukan menggunakan **Lighthouse** dan pemeriksaan manual dengan papan ketik.
 
-3.1 Hasil Lighthouse
+Pemeriksaan dilakukan untuk memastikan halaman dapat digunakan dengan baik oleh pengguna, termasuk pengguna yang mengandalkan keyboard dan teknologi bantu.
 
-Berdasarkan dokumentasi yang tersedia, hasil Lighthouse pada halaman yang diperiksa menunjukkan skor aksesibilitas 100. Skor tersebut menunjukkan bahwa tidak terdapat kegagalan pada audit aksesibilitas yang ditampilkan pada hasil pemeriksaan tersebut.
+## 3.1 Hasil Lighthouse
 
-Halaman
+Berdasarkan hasil pengujian yang tersedia, halaman utama memperoleh skor aksesibilitas **100** pada Lighthouse.
 
-Skor Sebelum Perbaikan
+Hasil tersebut menunjukkan bahwa pada pemeriksaan Lighthouse yang dilakukan, tidak terdapat audit aksesibilitas yang gagal pada halaman utama.
 
-Skor Sesudah Perbaikan
+| Halaman | Skor Sebelum Perbaikan | Skor Sesudah Perbaikan |
+|---|---:|---:|
+| Halaman Latihan | Belum tersedia | Belum tersedia |
+| Halaman Utama | Belum tersedia | 100 |
 
-Halaman Latihan
+Data skor sebelum perbaikan dan skor halaman latihan belum tersedia dalam dokumentasi pengujian. Oleh karena itu, angka yang belum terverifikasi tidak dicantumkan.
 
-Belum tersedia
+### Dokumentasi Lighthouse
 
-Belum tersedia
+**Gambar 7. Skor Lighthouse**
 
-Halaman Utama
+![Hasil Lighthouse](./images/lighthouse.png)
 
-Belum tersedia
+---
 
-100
+## 3.2 Daftar Audit yang Gagal
 
-Data skor sebelum perbaikan dan skor halaman latihan belum tercantum pada dokumen yang tersedia, sehingga tidak diisi dengan angka yang tidak terverifikasi.
+Pada hasil Lighthouse halaman utama yang terdokumentasi, skor aksesibilitas adalah **100**.
 
-Gambar 7. Skor Lighthouse
+Berdasarkan hasil tersebut, tidak terdapat audit aksesibilitas yang gagal pada pemeriksaan halaman utama.
 
-3.2 Daftar Audit yang Gagal
+| Audit yang Gagal | Penyebab | Perbaikan |
+|---|---|---|
+| Tidak ada pada hasil yang terdokumentasi | - | - |
 
-Pada hasil Lighthouse halaman utama yang terdokumentasi, skor aksesibilitas adalah 100 sehingga tidak terdapat audit aksesibilitas yang gagal pada hasil tersebut.
+Jika terdapat hasil Lighthouse sebelum perbaikan, daftar audit yang gagal dapat ditambahkan berdasarkan hasil pengujian tersebut.
 
-Audit yang gagal
+---
 
-Penyebab
+## 3.3 Pemeriksaan Manual dengan Papan Ketik
 
-Perbaikan
-
-Tidak ada pada hasil yang terdokumentasi
-
--
-
--
-
-Jika terdapat hasil Lighthouse sebelum perbaikan, daftar audit yang gagal dapat ditambahkan berdasarkan hasil tersebut.
-
-3.3 Pemeriksaan Manual dengan Papan Ketik
-
-Pemeriksaan manual dilakukan menggunakan papan ketik dengan tombol Tab untuk melihat perpindahan fokus antar elemen interaktif.
+Pemeriksaan manual dilakukan menggunakan papan ketik dengan tombol **Tab** untuk melihat perpindahan fokus antar elemen interaktif.
 
 Hal-hal yang diperiksa meliputi:
 
-Urutan fokus mengikuti struktur halaman secara logis.
+1. Urutan fokus mengikuti struktur halaman secara logis.
+2. Elemen interaktif seperti tautan, input, dan tombol dapat dicapai menggunakan keyboard.
+3. Elemen yang sedang mendapatkan fokus memiliki indikator visual.
+4. Pengguna dapat mencapai konten utama tanpa harus melewati seluruh navigasi melalui penggunaan tautan **"Lewati ke konten utama"**.
 
-Elemen interaktif seperti tautan, input, dan tombol dapat dicapai menggunakan keyboard.
+Pada kode halaman utama, indikator fokus pada input dan tombol menggunakan kelas:
 
-Elemen yang sedang mendapatkan fokus memiliki indikator visual.
-
-Pengguna dapat mencapai konten utama tanpa harus melewati seluruh navigasi melalui penggunaan tautan "Lewati ke konten utama".
-
-Pada kode halaman utama, indikator fokus pada input dan tombol menggunakan:
-
+```text
 focus-visible:outline-2
 focus-visible:outline-offset-2
 focus-visible:outline-blue-700
+```
 
-Hal ini memberikan garis fokus yang terlihat ketika elemen mendapatkan fokus melalui keyboard.
+Kelas tersebut memberikan garis fokus yang terlihat ketika elemen mendapatkan fokus melalui keyboard.
 
-Gambar 8. Hasil pemeriksaan manual menggunakan papan ketik
+Selain itu, halaman menyediakan skip link:
 
-4. Kendala dan Penyelesaian
+```tsx
+<a
+  href="#konten"
+  className="sr-only focus:not-sr-only focus:p-2"
+>
+  Lewati ke konten utama
+</a>
+```
 
-4.1 Penyesuaian Tampilan pada Berbagai Ukuran Layar
+Skip link tersebut memungkinkan pengguna keyboard untuk langsung menuju elemen `<main id="konten">`.
 
-Salah satu hal yang perlu diperhatikan adalah perbedaan ukuran layar perangkat. Jika seluruh elemen dibuat dalam satu susunan tetap, tampilan dapat menjadi kurang sesuai pada layar yang lebih kecil.
+### Urutan Fokus
 
-Penyelesaian: digunakan CSS Grid dan Flexbox dengan breakpoint Tailwind CSS. Fitur berubah dari satu kolom menjadi dua dan kemudian tiga kolom, sedangkan navigasi berubah dari vertikal menjadi horizontal.
+Secara umum, urutan fokus mengikuti urutan elemen interaktif pada halaman, yaitu:
 
-4.2 Struktur dan Navigasi Aksesibilitas
+```text
+Lewati ke konten utama
+        ↓
+NamaProduk
+        ↓
+Fitur
+        ↓
+Kontak
+        ↓
+Nama lengkap
+        ↓
+Surel
+        ↓
+Pengguna
+        ↓
+Mitra
+        ↓
+Pesan
+        ↓
+Kirim
+```
+
+**Gambar 8. Hasil pemeriksaan manual menggunakan papan ketik**
+
+![Pemeriksaan Keyboard](./images/keyboard-focus.png)
+
+---
+
+# 4. Kendala dan Penyelesaian
+
+## 4.1 Penyesuaian Tampilan pada Berbagai Ukuran Layar
+
+Salah satu kendala yang perlu diperhatikan adalah perbedaan ukuran layar perangkat. Jika seluruh elemen dibuat dalam satu susunan tetap, tampilan dapat menjadi kurang sesuai pada layar yang lebih kecil.
+
+### Penyelesaian
+
+Digunakan CSS Grid dan Flexbox dengan breakpoint Tailwind CSS.
+
+Pada bagian Fitur Utama, layout berubah dari:
+
+```text
+1 kolom
+   ↓
+2 kolom
+   ↓
+3 kolom
+```
+
+Sedangkan pada bagian navigasi, layout berubah dari:
+
+```text
+Vertikal
+   ↓
+Horizontal
+```
+
+Perubahan tersebut dilakukan menggunakan breakpoint `sm` dan `lg`.
+
+---
+
+## 4.2 Struktur dan Navigasi Aksesibilitas
 
 Pengguna keyboard perlu dapat berpindah ke elemen interaktif dan mengetahui elemen yang sedang aktif.
 
-Penyelesaian: halaman menggunakan elemen HTML semantik, tautan skip navigation, serta indikator fokus menggunakan focus-visible.
+### Penyelesaian
 
-4.3 Verifikasi Aksesibilitas
+Halaman menggunakan:
 
-Pemeriksaan dengan kode saja belum cukup untuk memastikan halaman dapat digunakan dengan baik oleh pengguna.
+- Elemen HTML semantik.
+- Hierarki heading yang terstruktur.
+- Skip link untuk melewati navigasi.
+- Label pada input menggunakan `<label>`.
+- `fieldset` dan `legend` untuk mengelompokkan pilihan peran.
+- Indikator fokus menggunakan `focus-visible`.
 
-Penyelesaian: dilakukan pemeriksaan menggunakan Accessibility Tree pada DevTools, Lighthouse, dan navigasi manual menggunakan papan ketik.
+Penggunaan elemen tersebut membantu meningkatkan struktur dan navigasi halaman bagi pengguna.
 
-5. Catatan Pemanfaatan AI
+---
+
+## 4.3 Verifikasi Aksesibilitas
+
+Pemeriksaan menggunakan kode saja belum cukup untuk memastikan halaman dapat digunakan dengan baik oleh pengguna.
+
+### Penyelesaian
+
+Verifikasi dilakukan melalui beberapa metode:
+
+1. **Accessibility Tree pada DevTools** untuk melihat bagaimana struktur halaman dikenali oleh browser.
+2. **Lighthouse** untuk melakukan audit aksesibilitas otomatis.
+3. **Pemeriksaan keyboard** untuk memastikan elemen interaktif dapat dicapai menggunakan tombol `Tab`.
+4. **Pemeriksaan indikator fokus** untuk memastikan elemen yang aktif dapat terlihat oleh pengguna.
+
+---
+
+# 5. Catatan Pemanfaatan AI
 
 AI digunakan sebagai alat bantu dalam penyusunan dan perapihan dokumentasi teknis.
 
-Alat
+| Alat | Perintah Utama | Bagian yang Digunakan | Cara Verifikasi |
+|---|---|---|---|
+| ChatGPT | Membantu menjelaskan struktur semantik, Flexbox, Grid, breakpoint, dan audit aksesibilitas berdasarkan kode `page.tsx` serta hasil pengujian. | Penyusunan dokumentasi teknis dan penjelasan implementasi. | Hasil AI dibandingkan kembali dengan kode `page.tsx`, screenshot tampilan, hasil DevTools, Lighthouse, dan pemeriksaan keyboard. |
 
-Perintah Utama
+AI tidak digunakan sebagai pengganti pengujian.
 
-Bagian yang Digunakan
+Informasi mengenai breakpoint, kelas Flexbox, kelas Grid, dan struktur semantik diverifikasi berdasarkan kode `page.tsx`.
 
-Cara Verifikasi
+Hasil audit aksesibilitas diverifikasi menggunakan Lighthouse dan pemeriksaan manual dengan papan ketik.
 
-ChatGPT
-
-Membantu menjelaskan struktur semantik, Flexbox, Grid, breakpoint, dan audit aksesibilitas berdasarkan kode page.tsx serta hasil pengujian.
-
-Penyusunan dokumentasi teknis dan penjelasan implementasi.
-
-Hasil AI dibandingkan kembali dengan kode page.tsx, screenshot tampilan, hasil DevTools, Lighthouse, dan pemeriksaan keyboard.
-
-AI tidak digunakan sebagai pengganti pengujian. Informasi mengenai breakpoint, kelas Flexbox, kelas Grid, dan struktur semantik diverifikasi berdasarkan kode page.tsx. Hasil audit aksesibilitas diverifikasi menggunakan Lighthouse dan pemeriksaan manual.
+Dengan demikian, dokumentasi disusun berdasarkan implementasi kode dan hasil pengujian yang dilakukan pada halaman utama.
 
